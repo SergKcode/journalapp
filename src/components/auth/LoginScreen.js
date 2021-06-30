@@ -1,18 +1,23 @@
 import React from 'react';
+import {useDispatch} from 'react-redux'
 import { Link } from 'react-router-dom'
+import { startLoginEmailPassword } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = () => {
 
+    const dispatch = useDispatch();
+
     const [formValues, handleInputChange]= useForm({
-        email: "random@gmail.com",
-        password: "1234"
+        email: "rando0m@gmail.com",
+        password: "12300004"
     });
 
     const {email, password} = formValues;
 
     const handleLogin = (e)=>{
         e.preventDefault()
+        dispatch(startLoginEmailPassword(email, password))
         
     }
 
@@ -23,7 +28,7 @@ export const LoginScreen = () => {
         <>
             <h3 className="auth__title">Login</h3>
 
-            <form>
+            <form onSubmit={handleLogin}>
 
                 <input 
                     type="text"
