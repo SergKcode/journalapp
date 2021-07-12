@@ -7,7 +7,7 @@ import {
 
 import { useDispatch } from 'react-redux';
 
-import { firebase } from '../firebase/firebase-config'
+import { firebase } from '../firebase/firebaseConfig'
 import { AuthRouter } from './AuthRouter';
 import { PrivateRoute } from './PrivateRoute';
 
