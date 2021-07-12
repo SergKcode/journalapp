@@ -3,7 +3,7 @@ import { types } from "../types/types";
 import Swal from 'sweetalert2';
 
 import { startLoading, finishLoading } from './ui';
-
+import { noteLogout } from './notes';
 
 
 export const startLoginEmailPassword = (email, password) => {
@@ -63,15 +63,14 @@ export const startGoogleLogin =()=>{
     }
 
 }
-export const login = (uid, displayName) =>({
-    
+
+export const login = (uid, displayName) => ({
     type: types.login,
-    payload:{
+    payload: {
         uid,
         displayName
     }
-    
-})
+});
 
 
 export const startLogout = () => {
@@ -79,6 +78,7 @@ export const startLogout = () => {
         await firebase.auth().signOut();
 
         dispatch( logout() );
+        dispatch( noteLogout() );
     }
 }
 
@@ -86,3 +86,5 @@ export const startLogout = () => {
 export const logout = () => ({
     type: types.logout
 })
+
+
